@@ -12,7 +12,7 @@ InterSystems IRIS Vector Search Early Access Program (EAP) materials. This repo 
    - [Kits and Containers:](#kits-and-containers)
    - [License Keys:](#license-keys)
    - [Documentation:](#documentation)
-   - [Code Samples:](#code-samples)
+   - [Code Samples / Demos:](#code-samples)
 5. [References](#references)
 6. [Vectors as Indexes](#vectors-as-indexes)
 7. [Vector Search Tutorial: Storing and Retrieving data using similarity](#vector-search-tutorial-storing-and-retrieving-data-using-similarity)
@@ -37,18 +37,15 @@ InterSystems IRIS Vector Search Early Access Program (EAP) materials. This repo 
 
 First, a little about "vector databases" -- a niche within the database market that appeared when the first useful "language models" started being used to index unstructured (free text, natural language) data for search applications, in particular "recommendation engines" for "product search", and "sentiment analysis" use cases. The basic idea is that any bit of text could be converted to a dense numeric vector or array of some predetermined length, such as 128 dimensions, by a language model, such that text that had similar semantic meaning would be clustered "close together" in that large dimensional space. This content encoding was then very useful for recommending similar products, etc. Since traditional DBMSs did not support handling such large arrays as data types, vendors sprang up in the mid 2010's to fill this gap. Fast forward to today, and these language models are larger and more powerful, and vector search is a primary way to leverage this power for enterprise applications.  
 
-InterSystems is not "bolting on" a separately engineered component -- vectors are "just another datatype" for us! Our recent addition of Columnar storage required a low-level ObjectScript $vector data type, which, with a little tweaking here and there, was elevated to a full-fledged citizen within our SQL engine -- a testament to IRIS' elegant design and tight integration between ObjectScript and SQL!  
-
-This Early Access Program is focused on the first of these pillars and covers the following features, which we aim to make available as experimental features in the 2024.1 release:  
+InterSystems is not "bolting on" a separately engineered component -- vectors are "just another datatype" for us! Our recent addition of Columnar storage required a low-level ObjectScript $vector data type, which is the basis for the new vector datatype in SQL. For the 2024.1 release we are introducing as Experimental Features:  
 
 - a new **[Vector SQL datatype](#vector-sql-datatype)** - vectors are lists of (typically) floats, that can be stored in a SQL table column, where all vectors in a given column are the same length. These vectors are the output of an embedding language model, and are used to represent the language model's estimation of the meaning of a passage of text. These vectors can then be compared with each other, and in the case of the RAG pattern, are compared to a vector derived from a query.
 
-- a new [**VECTOR_DOT_PRODUCT()**](Vector+as+a+SQL+datatype#VectorasaSQLdatatype-VECTOR_DOT_PRODUCT) SQL function to compare vectors  
+- new similarity functions that perform comparisons between 2 vectors:
+   - [**VECTOR_DOT_PRODUCT()**](#VectorasaSQLdatatype-VECTOR_DOT_PRODUCT)
+   - [**VECTOR_COSINE()**](#VectorasaSQLdatatype-VECTOR_COSINE) 
 
-As development bandwidth permits (and based on early EAP feedback), we may be able to make additional features available towards the second half of the EAP.  
-
-For context, we're planning the following additional features in this area:  
-
+We are also updating our Community-developed ancillary components:
 - Updated DB-API and SQLAlchemy drivers that will support python application development using the most popular LLM development frameworks and tools, including from Embedded Python, which will enable an easier path for InterSystems to build features  
 
 - [LangChain VectorStore](https://github.com/langchain-ai/langchain/blob/master/libs/core/langchain_core/vectorstores.py) implementation -- LangChain is the most popular "LLM interoperability" framework, and our VectoreStore implementation will make using IRIS within these applications much simpler  
@@ -65,15 +62,13 @@ Since this is exciting and new functionality in IRIS, naturally we want to get i
 
 ## Early Access Program Materials  
 
-### Kits and Containers:  
-
-Please obtain the latest build for your machine architecture from the VECDB branch available here: http://kits-web/kits/unreleased/IRIS/2024.1.0VECDB/  
-
-Docker containers are available from .https://kitserver.iscinternal.com/kits/unreleased/Docker/2024.1.0VECDB/  
-
-Unless otherwise indicated, the build is the best one!latest  
+### Kits and Containers: 
+- 2024.1 Developer Preview kits and containers, both Enterprise and Community editions, support Vector Search
+- "bleeding edge" kits and container images are available via download in the Early Access Program page
 
 ### License Keys:  
+
+There are also license keys that you can use with these kits/containers, just download and apply the key for the version (kit or container) you want to install.   
 
 ### Documentation:  
 
