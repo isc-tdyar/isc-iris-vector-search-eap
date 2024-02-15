@@ -1,7 +1,5 @@
-# isc-iris-vector-search-eap
-InterSystems IRIS Vector Search Early Access Program (EAP) materials. This repo contains information about how to get started using IRIS Vector Search, which brings the power of embedding vectors and the Retrieval Augmented Generation (RAG) applications to IRIS.
-
 # IRIS Vector Search - Early Access Program
+InterSystems IRIS Vector Search Early Access Program (EAP) materials. This repo contains information about how to get started using IRIS Vector Search, which brings the power of embedding vectors and the Retrieval Augmented Generation (RAG) applications to IRIS.
 
 ## Table of Contents
 
@@ -33,32 +31,31 @@ InterSystems IRIS Vector Search Early Access Program (EAP) materials. This repo 
 
 ## Overview
 
-## IRIS "as a Vector Database"  
+## What is IRIS Vector Search -- is IRIS now a "Vector Database"?  
 
-First, a little about "vector databases" -- a niche within the database market that appeared when the first useful "language models" started being used to index unstructured (free text, natural language) data for search applications, in particular "recommendation engines" for "product search", and "sentiment analysis" use cases. The basic idea is that any bit of text could be converted to a dense numeric vector or array of some predetermined length, such as 128 dimensions, by a language model, such that text that had similar semantic meaning would be clustered "close together" in that large dimensional space. This content encoding was then very useful for recommending similar products, etc. Since traditional DBMSs did not support handling such large arrays as data types, vendors sprang up in the mid 2010's to fill this gap. Fast forward to today, and these language models are larger and more powerful, and vector search is a primary way to leverage this power for enterprise applications.  
+Vector databases occupy a niche within the database market that appeared when the first useful "language models" such as "Word2Vec" and "BERT" were invented and used to power search applications over unstructured "natural language" data. In particular "recommendation engines" for "product search", and "sentiment analysis" were primary use cases. The basic idea of how these language models are applied is that they convert or encode any bit of text into a dense numeric vector or array of some predetermined length (e.g. 128) where each element represents a dimension, such that text that had similar semantic meaning would be clustered "close together" in that large dimensional space, termed a latent embedding space. This content encoding was then very useful for recommending similar products, for example, since finding similar products is reduced to a geometric comparison of the encodings of different items that each have a unique vector or "fingerprint". Since traditional DBMSs did not support handling such large arrays as data types, vendors sprang up in the mid 2010's to fill this gap. Fast forward to today, and these language models are larger and more powerful being able to capture the semantic meaning of entire sentences (and the number of dimensions of the embedding spaces are correspondingly higher). Now vector search is a primary way to leverage this power for enterprise applications, by providing powerful "semantic search" over enterprise data, that can then be combined with Large Language Models such as ChatGPT to help avoid hallucinations and bias inherent in those general-purpose tools, that make them unsuitable for many business use cases.
 
-InterSystems is not "bolting on" a separately engineered component -- vectors are "just another datatype" for us! Our recent addition of Columnar storage required a low-level ObjectScript $vector data type, which is the basis for the new vector datatype in SQL. For the 2024.1 release we are introducing as Experimental Features:  
+InterSystems is launching InterSystems IRIS Vector Search, a set of SQL-based capabilities 
 
+InterSystems is not "bolting on" a separately engineered component -- vectors are "just another datatype" for us! Our recent addition of Columnar storage required a low-level ObjectScript $vector data type, which is the basis for the new vector datatype in SQL.
+
+## IRIS Vector Search Early Access Program
+
+For the 2024.1 release we are introducing IRIS Vector Search as an Experimental Feature, comprising:  
+
+### IRIS SQL additions for Vector Search:
 - a new **[Vector SQL datatype](#vector-sql-datatype)** - vectors are lists of (typically) floats, that can be stored in a SQL table column, where all vectors in a given column are the same length. These vectors are the output of an embedding language model, and are used to represent the language model's estimation of the meaning of a passage of text. These vectors can then be compared with each other, and in the case of the RAG pattern, are compared to a vector derived from a query.
 
 - new similarity functions that perform comparisons between 2 vectors:
    - [**VECTOR_DOT_PRODUCT()**](#VectorasaSQLdatatype-VECTOR_DOT_PRODUCT)
    - [**VECTOR_COSINE()**](#VectorasaSQLdatatype-VECTOR_COSINE) 
 
-We are also updating our Community-developed ancillary components:
+### Python DB-API Updates and LangChain and LlamaIndex Connectors
+We are also making Vector Search easy to use by ensuring the Python development experience is "plug and play":
 - Updated DB-API and SQLAlchemy drivers that will support python application development using the most popular LLM development frameworks and tools, including from Embedded Python, which will enable an easier path for InterSystems to build features  
 
 - [LangChain VectorStore](https://github.com/langchain-ai/langchain/blob/master/libs/core/langchain_core/vectorstores.py) implementation -- LangChain is the most popular "LLM interoperability" framework, and our VectoreStore implementation will make using IRIS within these applications much simpler  
 
-## The Early Access Program
-
-Since this is exciting and new functionality in IRIS, naturally we want to get it into peoples' hands as quickly as possible, and we plan a comprehensive, phased EAP for this:  
-
-| Phase | Goals (in priority order) | Audience | Availability | Timing |
-| ------------- |:-------------|-------------:|-------------:|-------------:|
-| 1 | - Identify defects and gaps in our implementation, before sharing publicly <br>- Solicit feedback on (initially limited) API surface and desirable extensions     | employees only <br>(focus on innovation teams) | internal-only kit, frequent builds | Week of Dec 18, 2023 |   
-| 2 | - Identify real-world use cases and potential reference customer <br> - Solicit feedback on API surface and desirable extensions to feed 2024.2 roadmap <br> - Data points on performance | hands-on customers | 2024.1 developer preview, biweekly updates | mid-January, 2024 <br> once merged into DP stream |
-| 3 | - Add reference customers <br> - Solicit feedback to finalize 2024.2 content <br> - Data points on performance | customers | 2024.1 GA release | align with 2024.1 release cycle |
 
 ## Early Access Program Materials  
 
