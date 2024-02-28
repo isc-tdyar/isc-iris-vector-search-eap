@@ -5,9 +5,12 @@ Welcome to the Early Access Program (EAP) for IRIS Vector Search! This program p
 ## Getting Started
 
 - **Overview**: IRIS Vector Search introduces SQL-based vector capabilities, enabling powerful semantic search functionalities within your applications.
+  - This functionality in IRIS 2024.1 is Experimental, and will be fully released in a future IRIS release.
+  - IRIS Vector Search comprises a new SQL datatype _vector_, and similarity functions to search for similar vectors using _cosine_ and _dot product_ comparison.
+  - Users can access this functionality via SQL directly, or via Community-developed and LangChain and LlamaIndex, popular Python frameworks for developing Generative AI applications -- see this [GitHub repository](https://github.com/intersystems-community/iris-vector-search).
 - **Early Access Materials**:
   - Download the Developer Preview kits and containers from this page (above).
-  - License keys will be emailed to you.
+  - License keys will be emailed to you, if you want to use a kit that is not the Community Edition.
 
 ## Documentation and Demos
 
