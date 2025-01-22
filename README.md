@@ -12,12 +12,13 @@ Welcome to the Early Access Program (EAP) for IRIS Vector Search! This program p
   - Clone this [GitHub repository](https://github.com/intersystems-community/iris-vector-search) for instructions and code to use InterSystems IRIS Community Edition via docker, as well as demo applications.
   - We have a new build that provides an Approximate Nearest Neighbors (ANN) index, in pre-release form, in kits and docker images you can download from here, as well as time-limited keys. NOTE: You will need to obtain a license key from [Thomas Dyar](mailto:thomas.dyar@intersystems.com) to run these kits.
   - See the document "Vector_index.docx" for documentation on using the ANN index.
+=======
+  - If you would like to install a "bare metal" kit that is not the Community Edition, please contact [Thomas Dyar](mailto:thomas.dyar@intersystems.com).
 
 ## Documentation and Demos
 
 - IRIS Vector Search is officially released in IRIS 2024.1, documentation here: https://docs.intersystems.com/iris20241/csp/docbook/Doc.View.cls?KEY=GSQL_vecsearch
 - Tutorials, and demo files, available at our [GitHub repository](https://github.com/intersystems-community/iris-vector-search).
-- There is a bit more info in this directory name "Vector_Index.docx
 
 ## Support and Feedback
 
