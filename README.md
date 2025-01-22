@@ -2,18 +2,19 @@
 
 Welcome to the Early Access Program (EAP) for IRIS Vector Search! This program provides participants with the tools and knowledge to leverage the power of vector search within InterSystems IRIS.
 
-## Getting Started
+## Overview
 
-- **Overview**: IRIS Vector Search introduces SQL-based vector capabilities, enabling powerful semantic search functionalities within your applications.
+  - IRIS Vector Search introduces SQL-based vector capabilities, enabling powerful semantic search functionalities within your applications.
   - This functionality in IRIS 2024.1 is Experimental, and will be fully released in a future IRIS release.
   - IRIS Vector Search comprises a new SQL datatype _vector_, and similarity functions to search for similar vectors using _cosine_ and _dot product_ comparison.
   - Users can access this functionality via SQL directly, or via Community-developed and LangChain and LlamaIndex, popular Python frameworks for developing Generative AI applications.
-- **Early Access Materials**:
+
+## Early Access Materials
+
   - Clone this [GitHub repository](https://github.com/intersystems-community/iris-vector-search) for instructions and code to use InterSystems IRIS Community Edition via docker, as well as demo applications.
-  - We have a new build that provides an Approximate Nearest Neighbors (ANN) index, in pre-release form, in kits and docker images you can download from here, as well as time-limited keys. NOTE: You will need to obtain a license key from [Thomas Dyar](mailto:thomas.dyar@intersystems.com) to run these kits.
+  - We have a new build that provides an Approximate Nearest Neighbors (ANN) index, in pre-release form, in kits and docker images you can download from here, as well as time-limited keys. NOTE: License keys are available here, but if you don't see a license for your architecture, contact [Thomas Dyar](mailto:thomas.dyar@intersystems.com) to run these kits.
   - See the document "Vector_index.docx" for documentation on using the ANN index.
-=======
-  - If you would like to install a "bare metal" kit that is not the Community Edition, please contact [Thomas Dyar](mailto:thomas.dyar@intersystems.com).
+  - If there is no kit listed here for your machine/OS architecture, please contact [Thomas Dyar](mailto:thomas.dyar@intersystems.com).
 
 ## Documentation and Demos
 
